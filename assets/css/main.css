@@ -158,3 +158,121 @@
 .timeline-item:nth-child(1) { animation-delay: 0.1s; }
 .timeline-item:nth-child(2) { animation-delay: 0.3s; }
 .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+
+/* ===== Education Timeline ===== */
+.education-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #fff;
+  position: relative;
+}
+
+.education-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background: linear-gradient(to bottom, #04AA6D, #038a5a);
+  top: 0;
+  bottom: 0;
+  left: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 12px;
+  top: 5px;
+  background: #0c0c0c;
+  border: 3px solid #04AA6D;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-date {
+  display: inline-block;
+  font-weight: 700;
+  color: #04AA6D;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.timeline-content {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 8px;
+  border-left: 3px solid #04AA6D;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.education-header h3 {
+  margin: 0 0 5px 0;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.education-location {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.timeline-content h4 {
+  margin: 0 0 15px 0;
+  color: #ddd;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.detail-row {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #04AA6D;
+  min-width: 120px;
+}
+
+.detail-value {
+  color: #ccc;
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .education-timeline {
+    padding-left: 30px;
+  }
+  
+  .timeline-item::before {
+    left: 8px;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+  }
+  
+  .detail-label {
+    margin-bottom: 5px;
+  }
+}

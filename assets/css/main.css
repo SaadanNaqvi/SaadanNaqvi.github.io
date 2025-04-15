@@ -303,3 +303,16 @@
     max-height: calc(100vh - 150px);
   }
 }
+/* Ensure other sections don't scroll */
+.l-section.section {
+  overflow: hidden !important;
+}
+
+/* Better scrollbar for education */
+.education-section::-webkit-scrollbar {
+  width: 6px;
+}
+.education-section::-webkit-scrollbar-thumb {
+  background: #04AA6D;
+  border-radius: 3px;
+}

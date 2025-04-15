@@ -3,15 +3,23 @@
 .education-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 40px 20px;
+  height: auto;
   min-height: 100vh;
+  scroll-snap-align: start;
+}
+
+.education-container {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .education-timeline {
   position: relative;
   max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .education-timeline::before {
@@ -31,6 +39,7 @@
   padding: 30px 0;
   position: relative;
   width: 50%;
+  box-sizing: border-box;
   animation: fadeInUp 0.6s ease forwards;
   opacity: 0;
 }
@@ -53,6 +62,7 @@
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .timeline-content:hover {
@@ -72,26 +82,36 @@
   font-size: 1.1em;
 }
 
+/* Dot positioning - fixed */
 .timeline-item::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  right: -10px;
+  top: 40px;
   background-color: #0c0c0c;
   border: 4px solid #04AA6D;
-  top: 40px;
   border-radius: 50%;
   z-index: 2;
   box-shadow: 0 0 0 6px rgba(4, 170, 109, 0.2);
+}
+
+.timeline-item:nth-child(odd)::after {
+  right: -10px;
 }
 
 .timeline-item:nth-child(even)::after {
   left: -10px;
 }
 
-/* Responsive */
+/* Responsive Timeline */
 @media (max-width: 768px) {
+  .education-container {
+    max-height: none;
+    overflow-y: visible;
+    padding: 10px;
+  }
+  
   .education-timeline::before {
     left: 31px;
   }
@@ -106,6 +126,7 @@
   
   .timeline-item::after {
     left: 21px !important;
+    right: auto !important;
   }
   
   .timeline-item:nth-child(even)::after {
@@ -113,6 +134,7 @@
   }
 }
 
+/* Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -123,6 +145,10 @@
     transform: translateY(0);
   }
 }
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
 
 .timeline-item:nth-child(1) { animation-delay: 0.2s; }
 .timeline-item:nth-child(2) { animation-delay: 0.4s; }

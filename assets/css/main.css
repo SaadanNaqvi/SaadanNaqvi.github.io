@@ -276,3 +276,30 @@
     margin-bottom: 5px;
   }
 }
+/* Make education section independently scrollable */
+.l-section.section {
+  overflow-y: auto !important;
+  height: 100vh !important;
+  scroll-snap-type: y mandatory;
+}
+
+.education-section {
+  min-height: 100vh !important;
+  padding-bottom: 100px;
+  scroll-snap-align: start;
+}
+
+/* Keep existing timeline styles */
+.education-timeline {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding: 0 40px 100px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .education-timeline {
+    padding: 0 20px 80px;
+    max-height: calc(100vh - 150px);
+  }
+}

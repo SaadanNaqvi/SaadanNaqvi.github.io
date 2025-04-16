@@ -24,25 +24,25 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -2px; /* Exact center accounting for line width */
   z-index: 1;
 }
 
 .timeline-item {
   position: relative;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
-/* Dot positioning */
+/* Dot positioning - absolutely centered on line */
 .timeline-item::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 15px;
+  top: 15px; /* Aligns with first line of content */
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -10px; /* Half of dot width to center perfectly */
   background: #0c0c0c;
   border: 4px solid #04AA6D;
   border-radius: 50%;
@@ -51,46 +51,32 @@
 }
 
 .timeline-content {
-  width: 46%; /* Slightly reduced width for better spacing */
+  width: 45%;
   padding: 25px;
-  margin: 0 2%; /* Added margin to prevent touching the line */
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  position: relative;
 }
 
-/* Alternate sides with safe spacing */
+/* Alternate sides for timeline items */
 .timeline-item:nth-child(odd) .timeline-content {
-  float: left;
-  clear: right;
-  margin-right: 4%; /* Extra space from center line */
+  margin-right: auto; /* Left side */
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-  float: right;
-  clear: left;
-  margin-left: 4%; /* Extra space from center line */
-}
-
-/* Clearfix */
-.timeline-item::before {
-  content: "";
-  display: table;
-  clear: both;
+  margin-left: auto; /* Right side */
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .timeline-content {
-    width: 80%;
-    margin: 0 10% 30px 10% !important;
-    float: none !important;
+    width: 85%;
+    margin-left: 15% !important;
   }
   
   .timeline-item::after {
-    left: 10%;
-    transform: none;
+    left: 7.5%;
+    margin-left: 0;
   }
 }

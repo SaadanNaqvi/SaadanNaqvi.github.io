@@ -7,6 +7,7 @@
   height: auto;
   min-height: 100vh;
   scroll-snap-align: start;
+  text-align: center; /* Added to center the header */
 }
 
 .education-container {
@@ -82,13 +83,15 @@
   font-size: 1.1em;
 }
 
-/* Dot positioning - fixed */
+/* Perfectly centered dots */
 .timeline-item::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 40px;
+  top: 45px; /* Adjusted vertical position */
+  left: 50%;
+  transform: translateX(-50%); /* Perfect horizontal centering */
   background-color: #0c0c0c;
   border: 4px solid #04AA6D;
   border-radius: 50%;
@@ -96,12 +99,12 @@
   box-shadow: 0 0 0 6px rgba(4, 170, 109, 0.2);
 }
 
-.timeline-item:nth-child(odd)::after {
-  right: -10px;
-}
-
+/* Remove the old dot positioning rules */
+.timeline-item:nth-child(odd)::after,
 .timeline-item:nth-child(even)::after {
-  left: -10px;
+  /* Reset these to default */
+  right: auto;
+  left: auto;
 }
 
 /* Responsive Timeline */
@@ -113,7 +116,8 @@
   }
   
   .education-timeline::before {
-    left: 31px;
+    left: 40px;
+    transform: none;
   }
   
   .timeline-item {
@@ -125,12 +129,8 @@
   }
   
   .timeline-item::after {
-    left: 21px !important;
-    right: auto !important;
-  }
-  
-  .timeline-item:nth-child(even)::after {
-    left: 21px !important;
+    left: 40px !important;
+    transform: none !important;
   }
 }
 
@@ -149,6 +149,3 @@
 .timeline-item:nth-child(1) { animation-delay: 0.2s; }
 .timeline-item:nth-child(2) { animation-delay: 0.4s; }
 .timeline-item:nth-child(3) { animation-delay: 0.6s; }
-
-.timeline-item:nth-child(1) { animation-delay: 0.2s; }
-.timeline-item:nth-child(2) { animation-delay: 0.4s; }

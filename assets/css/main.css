@@ -24,25 +24,25 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -2px; /* Exact center accounting for line width */
+  transform: translateX(-50%);
   z-index: 1;
 }
 
 .timeline-item {
   position: relative;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
-/* Dot positioning - absolutely centered on line */
+/* Dot positioning */
 .timeline-item::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 15px; /* Aligns with first line of content */
+  top: 15px;
   left: 50%;
-  margin-left: -10px; /* Half of dot width to center perfectly */
+  transform: translateX(-50%);
   background: #0c0c0c;
   border: 4px solid #04AA6D;
   border-radius: 50%;
@@ -51,32 +51,46 @@
 }
 
 .timeline-content {
-  width: 45%;
+  width: 46%; /* Slightly reduced width for better spacing */
   padding: 25px;
+  margin: 0 2%; /* Added margin to prevent touching the line */
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
 }
 
-/* Alternate sides for timeline items */
+/* Alternate sides with safe spacing */
 .timeline-item:nth-child(odd) .timeline-content {
-  margin-right: auto; /* Left side */
+  float: left;
+  clear: right;
+  margin-right: 4%; /* Extra space from center line */
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-  margin-left: auto; /* Right side */
+  float: right;
+  clear: left;
+  margin-left: 4%; /* Extra space from center line */
+}
+
+/* Clearfix */
+.timeline-item::before {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .timeline-content {
-    width: 85%;
-    margin-left: 15% !important;
+    width: 80%;
+    margin: 0 10% 30px 10% !important;
+    float: none !important;
   }
   
   .timeline-item::after {
-    left: 7.5%;
-    margin-left: 0;
+    left: 10%;
+    transform: none;
   }
 }

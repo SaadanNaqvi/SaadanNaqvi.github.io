@@ -20,6 +20,10 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeSection]);
+
   return (
     <div className="bg-gray-900 text-blue-400 min-h-screen relative overflow-hidden">
       {/* Animated Background Particles */}
@@ -212,7 +216,7 @@ function Navbar({ activeSection, setActiveSection, mobileMenuOpen, setMobileMenu
             }`}
           >
             <Cpu size={16} className="group-hover:animate-pulse" />
-            <span className="group-hover:animate-bounce">[SOLUTIONS]</span>
+            <span className="group-hover:animate-bounce">[PROJECTS]</span>
           </button>
           <a 
             href="https://github.com/SaadanNaqvi" 
@@ -254,7 +258,7 @@ function Navbar({ activeSection, setActiveSection, mobileMenuOpen, setMobileMenu
               }`}
             >
               <Cpu size={16} className="animate-pulse" />
-              [SOLUTIONS]
+              [PROJECTS]
             </button>
             <a 
               href="https://github.com/SaadanNaqvi" 
@@ -419,7 +423,7 @@ function Home({ setActiveSection }) {
               &nbsp;* Contestant Name: SAADAN NAQVI<br/>
               &nbsp;* Contestant Description: Aspiring Software Engineer & Student<br/>
               &nbsp;* Studying EE & Math/CompSci<br/>
-              &nbsp;* C++ Enthusiast || Problem Solver<br/>
+              &nbsp;* Competitive Programming Enthusiast<br/>
               <span className="text-cyan-400">&nbsp;*/</span>
             </div>
           </div>
@@ -445,10 +449,10 @@ function Home({ setActiveSection }) {
                 </div>
                 <div className="space-y-1">
                   <p className="text-cyan-300 flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-                    <span className="text-blue-400 animate-bounce-slow">→</span> Electrical and Electronic Engineering
+                    <span className="text-blue-400 animate-bounce-slow">→</span> Bachelors of Electrical and Electronic Engineering
                   </p>
                   <p className="text-cyan-300 flex items-center gap-2 group-hover:translate-x-2 transition-transform delay-75">
-                    <span className="text-blue-400 animate-bounce-slow delay-100">→</span> Mathematics & Computer Science
+                    <span className="text-blue-400 animate-bounce-slow delay-100">→</span> Bachelors of Mathematics & Computer Science
                   </p>
                 </div>
               </div>
@@ -500,15 +504,15 @@ function Home({ setActiveSection }) {
             <ul className="space-y-2 mt-4">
               <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform">
                 <span className="text-green-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow">✓</span>
-                <span>Tutoring competitive math & CS concepts for years 7-12</span>
+                <span>Tutoring students from years 7-12 in Mathematics, English and Science</span>
               </li>
               <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
                 <span className="text-green-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100">✓</span>
-                <span>Developing algorithmic thinking and problem-solving skills</span>
+                <span>High quality instructions aligned with the Australian Curriculum</span>
               </li>
               <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-150">
                 <span className="text-green-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-200">✓</span>
-                <span>Teaching optimisation techniques and efficient coding practices</span>
+                <span>Promoting student confidence, motivation and independent learning skills</span>
               </li>
             </ul>
           </div>
@@ -522,7 +526,7 @@ function Home({ setActiveSection }) {
             <div className="flex items-center gap-3 group">
               <div className="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-400 group-hover:animate-pulse"></div>
               <h2 className="text-3xl font-bold text-white group-hover:animate-bounce">
-                FEATURED_SOLUTIONS
+                FEATURED_PROJECTS
               </h2>
             </div>
             <button 
@@ -533,11 +537,20 @@ function Home({ setActiveSection }) {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform group-hover:animate-pulse" />
             </button>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
+          <SolutionCard 
+              title="N_BODY_SIMULATION"
+              description="3D gravitational N-body simulator using Newtonian physics, Barnes–Hut acceleration, and multi-threaded force evaluation."
+              difficulty="HARD"
+              runtime="Real-time"
+              memory="~120MB"
+              tech={["C++", "OPENGL", "BARNES_HUT", "OCTREE", "MULTI_THREADING"]}
+              date="Jan 2026 – Jan 2026"
+            />
             <SolutionCard 
               title="KEY_VALUE_STORE"
-              description="High performance key value store with custom memory management, 9.5% faster than std::unordered_map"
-              difficulty="HARD"
+              description="Key value store with custom memory management, TCP server and custom hashing that is 9.5% faster than std::unordered_map"
+              difficulty="MEDIUM"
               runtime="15ms"
               memory="2.3MB"
               tech={["C++", "LOCK-FREE", "ATOMIC", "TCP/IP"]}
@@ -545,10 +558,7 @@ function Home({ setActiveSection }) {
             />
             <SolutionCard 
               title="BLACK_SCHOLES_OPTION_PRICER"
-              description="Real-time options pricing engine with Monte Carlo simulation and live visualization"
-              difficulty="MEDIUM"
-              runtime="8ms"
-              memory="4.1MB"
+              description="Features live graph animations with real world stock data, portfolio performance and contract lifecycles"
               tech={["C++", "RAYLIB", "OOP", "STOCHASTIC"]}
               date="Aug 2025 – Oct 2025"
             />
@@ -586,13 +596,13 @@ function Home({ setActiveSection }) {
                 </div>
               </div>
               <ul className="space-y-2 mt-4">
-                <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform">
-                  <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow"></span>
-                  <span>Designed competition-grade rover lighting systems for Rover competitions</span>
-                </li>
                 <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
                   <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100"></span>
                   <span>PCB routing and component optimisation for competition constraints</span>
+                </li>
+                <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
+                  <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100"></span>
+                  <span>Worked with multiple different teams and departments made up of over 100 people</span>
                 </li>
               </ul>
             </div>
@@ -618,11 +628,11 @@ function Home({ setActiveSection }) {
               <ul className="space-y-2 mt-4">
                 <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform">
                   <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow"></span>
-                  <span>Managing sponsorships for university-wide programming competitions</span>
+                  <span>Managing sponsorships for university and Australia and Newzeland wide programming competitions</span>
                 </li>
                 <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
                   <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100"></span>
-                  <span>Organizing ICPC and regional competition events</span>
+                  <span>Organising ICPC and regional competition events</span>
                 </li>
               </ul>
             </div>
@@ -648,7 +658,16 @@ function Home({ setActiveSection }) {
               <ul className="space-y-2 mt-4">
                 <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform">
                   <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow"></span>
-                  <span>Placed 4th in 18-hour university-wide Datathon competition</span>
+                  <span>Placed 4th in 18 hour university wide Datathon competition</span>
+                </li>
+                <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
+                  <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100"></span>
+                </li>
+              </ul>
+              <ul className="space-y-2 mt-4">
+                <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform">
+                  <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow"></span>
+                  <span>Developed a machine learning solution to solve a real world data problem.</span>
                 </li>
                 <li className="flex items-start gap-3 text-blue-200 group/item hover:translate-x-2 transition-transform delay-75">
                   <span className="text-cyan-400 mt-1 group-hover/item:scale-125 transition-transform animate-bounce-slow delay-100"></span>
@@ -767,33 +786,55 @@ function SolutionCard({ title, description, difficulty, runtime, memory, tech, d
 function Projects() {
   const solutions = [
     {
-      title: "OPTIMIZED_KV_STORE.cpp",
-      description: "High-performance key-value store server with custom memory management and lock-free queuing",
+      title: "N_BODY_GRAVITATIONAL_SIMULATION.cpp",
+      description: "Designed, implemented, and visualised a real-time 3D N-body gravitational simulator using Newtonian physics and Velocity Verlet integration.",
       highlights: [
-        "Quadratic probing hash table with arena allocator eliminating heap fragmentation",
-        "SPSC lock-free queue for thread communication, maximizing throughput",
-        "Benchmarked 9.5% faster insertion than std::unordered_map under high concurrency"
+        "Implemented Barnes–Hut algorithm with octree acceleration, reducing force computation from O(n²) to O(n log n)",
+        "Parallelised force evaluation across CPU cores using multi-threading, scaling from 350 to 10,000 particles",
+        "Built a custom OpenGL renderer with free fly camera, mass-based colouring, and sphere-based particle models",
+        "Maintained real time frame rates under high particle counts"
       ],
       difficulty: "HARD",
+      memory: "~120MB",
+      tech: [
+        "C++",
+        "OPENGL",
+        "BARNES_HUT",
+        "OCTREE",
+        "VELOCITY_VERLET",
+        "MULTI_THREADING"
+      ],
+      github: "https://github.com/SaadanNaqvi/N-Body-Simulation",
+      date: "Dec 2025 – Jan 2026"
+    },    
+    {
+      title: "KEY_VALUE_STORE.cpp",
+      description: "Key value store with custom memory management, TCP server and custom hashing",
+      highlights: [
+        "Custom Quadratic probing hash table with arena allocator eliminating heap fragmentation",
+        "SPSC lock free queue for thread communication, maximising throughput",
+        "Benchmarked 9.5% faster insertion than std::unordered_map under high concurrency"
+      ],
+      difficulty: "MEDIUM",
       runtime: "15ms",
       memory: "2.3MB",
       tech: ["C++", "TCP_SOCKETS", "ATOMIC", "LOCK-FREE", "ARENA_ALLOC"],
-      github: "https://github.com/SaadanNaqvi",
+      github: "https://github.com/SaadanNaqvi/Key-Value-Store",
       date: "Nov 2025 – Dec 2025"
     },
     {
-      title: "BLACK-SCHOLES_SOLVER.cpp",
-      description: "Real-time options pricing engine with Monte Carlo simulation and analytical methods",
+      title: "BLACK_SCHOLES_OPTION_PRICER.cpp",
+      description: "Features live graph animations with real world stock data, portfolio performance and contract lifecycles",
       highlights: [
-        "Live graph animations with real-time stock data and portfolio tracking",
-        "Object-oriented architecture developed with version control teamwork",
+        "Live graph animations with real world stock data and portfolio tracking",
+        "Object oriented architecture developed with version control teamwork",
         "Integrated finance, stochastic calculus, and software design"
       ],
       difficulty: "MEDIUM",
       runtime: "8ms",
       memory: "4.1MB",
-      tech: ["C++", "RAYLIB", "CLOUD_SAVE", "OOP", "STOCHASTIC_CALC"],
-      github: "https://github.com/SaadanNaqvi",
+      tech: ["C++", "RAYLIB", "GIT", "OOP", "STOCHASTIC_CALC"],
+      github: "https://github.com/SaadanNaqvi/Black-Scholes-Option-Pricer",
       date: "Aug 2025 – Oct 202"
     }
   ];
@@ -810,12 +851,11 @@ function Projects() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-in slide-in-from-bottom duration-700 text-white">
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent animate-gradient">
-              COMPETITION_SOLUTIONS.bin
+              PROJECTS.bin
             </span>
           </h1>
           <p className="text-lg text-cyan-300 max-w-3xl animate-in fade-in slide-in-from-bottom duration-700 delay-200 border-l-2 border-blue-500 pl-4">
-            // Archive of optimized solutions for complex problems<br/>
-            // Focus on time/space complexity and elegant algorithms.
+            // Archive of projects exploring distributed systems, algorithms, and simulations<br/>
           </p>
         </div>
       </section>
@@ -932,7 +972,7 @@ function Footer() {
               <Github size={20} />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/saadan-naqvi/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-blue-300 hover:text-cyan-400 transition-all hover:scale-110 border border-blue-500 p-2 rounded hover:bg-blue-500/20 animate-bounce-slow delay-100"
@@ -941,7 +981,7 @@ function Footer() {
               <Linkedin size={20} />
             </a>
             <a 
-              href="mailto:contact@example.com"
+              href="saadanaqvi07@gmail.com"
               className="text-blue-300 hover:text-cyan-400 transition-all hover:scale-110 border border-blue-500 p-2 rounded hover:bg-blue-500/20 animate-bounce-slow delay-200"
               title="Submit Query"
             >
@@ -951,7 +991,7 @@ function Footer() {
         </div>
         <div className="mt-6 pt-6 border-t border-blue-500/30 text-center">
           <p className="text-xs text-blue-400/70 animate-pulse">
-            Competition Status: ACTIVE • Next Contest: ICPC Regionals 2026 • Rank: #42
+            Competition Status: ACTIVE
           </p>
         </div>
       </div>
@@ -966,7 +1006,7 @@ function TerminalEasterEgg() {
   const [history, setHistory] = useState([
     { type: 'output', text: 'CodeCraft Debug Console v2.5' },
     { type: 'output', text: 'Type "help" for debugging commands' },
-    { type: 'output', text: 'Contestant: SAADAN NAQVI | Rank: #42' }
+    { type: 'output', text: 'Contestant: SAADAN NAQVI' }
   ]);
   const inputRef = useRef(null);
 
@@ -976,41 +1016,25 @@ function TerminalEasterEgg() {
       '  status    - Competition status',
       '  stats     - Performance statistics',
       '  next      - Upcoming contests',
-      '  rank      - Current ranking',
       '  solve     - Problem solving tips',
-      '  clear     - Clear console',
       '  exit      - Close debug console'
     ],
     status: () => [
       '=== COMPETITION STATUS ===',
       'Active: Yes',
-      'Current Streak: 42 days',
-      'Problems Today: 3/5',
-      'Accuracy: 94.7%',
-      'Avg Runtime: 15ms'
+      'Current Streak: 500000 days',
+      'Problems Today: 0/5',
+      'TLE Rate: 100.0%',
     ],
     stats: () => [
       '=== PERFORMANCE STATS ===',
-      'Total Solved: 127',
-      'Easy: 45/50 (90%)',
-      'Medium: 38/45 (84.4%)',
-      'Hard: 22/30 (73.3%)',
-      'Quant Finance: 22/25 (88%)',
-      'Recent: 4th Place - Datathon 202'
+      'Pretty Cool Guy',
     ],
     next: () => [
       '=== UPCOMING CONTESTS ===',
-      'ICPC Regionals - Mar 202',
-      'Google Code Jam - Apr 202',
-      'Facebook Hacker Cup - Jun 202',
-      'University Comp - Weekly'
-    ],
-    rank: () => [
-      'Current Global Rank: #42',
-      'University Rank: #3',
-      'Region: Top 5%',
-      'Rating: 1876',
-      'Percentile: 96.3%'
+      'ICPC Regionals Qualifier',
+      'AllUni',
+      'Adelaide University Competetive Programming League - 6 Rounds'
     ],
     solve: () => {
       const tips = [
@@ -1021,10 +1045,6 @@ function TerminalEasterEgg() {
         'Tip: Focus on clean, readable code first'
       ];
       return [tips[Math.floor(Math.random() * tips.length)]];
-    },
-    clear: () => {
-      setHistory([]);
-      return null;
     },
     exit: () => {
       setIsOpen(false);
